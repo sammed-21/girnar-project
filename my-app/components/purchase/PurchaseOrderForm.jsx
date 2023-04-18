@@ -16,7 +16,7 @@ const PurchaseOrderForm =()=> {
     newRows.splice(index, 1);
     setRows(newRows);
   }
-  return (~
+  return (
     <>
 
     
