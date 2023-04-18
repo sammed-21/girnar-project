@@ -20,7 +20,7 @@ const PurchaseOrderForm =()=> {
     <>
 
     
-      <div className='p-[5%] '>
+      <div className='p-[5%] flex flex-col '>
 
       <h1 style={{ textAlign: 'center', fontWeight: 'bold' }} className='pb-5'>Purchase Order</h1>
       <div style={{ display: 'flex', justifyContent: 'space-between',textAlign:'center', marginTop:'40px',alignItems:'center' }}>
@@ -46,7 +46,7 @@ const PurchaseOrderForm =()=> {
         </select>
         </div>
         
-        <div className=' flex flex-col align-center justify-center'>
+        <div className=' flex align-center justify-center'>
        
           
       {rows.map((row, index) => (
@@ -98,7 +98,7 @@ const PurchaseOrderForm =()=> {
          ))
          
         }
-          <div className='flex  flex-row  space-x-4  text-center justify-around'>
+          <div className='flex mx-3 flex-row py-3  my-2 space-x-4  text-center justify-around'>
         <button type='submit' onClick={handleAddRow} className="btn btn-md btn-primary mr-1 text-black">Add</button>
 
             <button onClick={handleDeleteRow} className='btn btn-sm btn-danger btn-delete-user '>Delete</button>
