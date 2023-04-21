@@ -19,6 +19,10 @@ module.exports = {
 
     return config;
   },
+  reactStrictMode: true,
+  compiler: {
+    styledComponents: true,
+  },
 };
 // module.exports = nextConfig
 // module.exports = {

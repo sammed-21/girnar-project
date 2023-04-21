@@ -44,7 +44,7 @@ function Alert({ id, fade }) {
                     }
                 }
             });
-        
+
 
         // clear alerts on location change
         const onRouteChange = () => alertService.clear(id);
@@ -78,7 +78,7 @@ function Alert({ id, fade }) {
         if (!alert) return;
 
         const classes = ['alert', 'alert-dismissable'];
-                
+
         const alertTypeClass = {
             [AlertType.Success]: 'alert-success',
             [AlertType.Error]: 'alert-danger',
@@ -102,8 +102,8 @@ function Alert({ id, fade }) {
             <div className="m-3">
                 {alerts.map((alert, index) =>
                     <div key={index} className={cssClasses(alert)}>
-                        <a className="close" onClick={() => removeAlert(alert)}>&times;</a>
-                        <span dangerouslySetInnerHTML={{__html: alert.message}}></span>
+                        <li className="close" onClick={() => removeAlert(alert)}>&times;</li>
+                        <span dangerouslySetInnerHTML={{ __html: alert.message }}></span>
                     </div>
                 )}
             </div>

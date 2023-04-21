@@ -5,7 +5,8 @@ const vendor = () => {
   return (
     <div>
     
-      <AddEdit/>
+      <AddEdit />
+      
     </div>
 
   )
