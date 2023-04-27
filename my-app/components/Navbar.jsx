@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import styles from "@/styles/Navbar.module.css";
 const Navbar = () => {
   const [purchase, setPurchase] = useState(false);
   const [sales, setSales] = useState(false);
   const [admin, setAdmin] = useState(false);
-
+  // const { hasMounted } = useMounted();
+  // const nav = hasMounted ? null : 0;
 
   return (
-    <div className=' flex justify-center'>
+    <>
+
       {/* {" "}
       {/* <nav className={styles.mainnav}> */}
       {/* <nav className="flex  bg-pink text-black fixed top-0 decoration-none list-none h-[10vh] w-full item-center justify-center space-x-9 py-7"> */}
@@ -29,17 +32,17 @@ const Navbar = () => {
 
 
 
-        <Link href="/purchase">
+        <Link href="/purchases">
           {" "}
 
 
           <div
             onClick={() => setPurchase(!purchase)}
             className="overflow-hidden  w-[14vh] flex justify-center items-center
-                            hover:cursor-pointer
-                            ">
+            hover:cursor-pointer
+            ">
 
-            Purchase <svg class="w-4 h-4 bg-transparent ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            Purchase <svg className="w-4 h-4 bg-transparent ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
           </div>
 
 
@@ -51,26 +54,18 @@ const Navbar = () => {
               className="block py-2 px-5 text-base font-semibold text-body-color hover:bg-primary hover:bg-opacity-5 hover:text-primary"
             >
               <Link href='/payment' onClick={() => setPurchase(!purchase)}>
+
                 Payment
+
               </Link>
             </li>
             <li
               href=" "
               className="block py-2 px-5 text-base font-semibold text-body-color hover:bg-primary hover:bg-opacity-5 hover:text-primary"
             >
-              <Link href='/'>New PO</Link>
+              <Link href='/payment/add'>New PO</Link>
             </li>
-
           </div>
-
-
-
-
-
-
-
-
-
           {" "}
         </Link>
 
@@ -83,10 +78,10 @@ const Navbar = () => {
           <div
             onClick={() => setSales(!sales)}
             className="overflow-hidden  w-[14vh] flex justify-center items-center
-                            hover:cursor-pointer
-                            ">
+            hover:cursor-pointer
+            ">
 
-            Sales <svg class="w-4 h-4 bg-transparent ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            Sales <svg className="w-4 h-4 bg-transparent ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
           </div>
 
 
@@ -128,10 +123,10 @@ const Navbar = () => {
           <div
             onClick={() => setAdmin(!admin)}
             className="overflow-hidden  w-[14vh] flex justify-center items-center
-                            hover:cursor-pointer
-                            ">
+            hover:cursor-pointer
+            ">
 
-            Admin <svg class="w-4 h-4 bg-transparent ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            Admin <svg className="w-4 h-4 bg-transparent ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
           </div>
 
 
@@ -162,7 +157,7 @@ const Navbar = () => {
               href=" "
               className="block py-2 px-5 text-base font-semibold text-body-color hover:bg-primary hover:bg-opacity-5 hover:text-primary"
             >
-              <Link href='/salesReceipt' onClick={() => setAdmin(!admin)} >Reedem Loyalty Point</Link>
+              <Link href='/reedeemloyalty' onClick={() => setAdmin(!admin)} >Reedem Loyalty Point</Link>
             </li>
 
           </div>
@@ -186,9 +181,9 @@ const Navbar = () => {
         </Link>
       </nav>
 
-    </div>
+    </>
   );
 
 };
+export default dynamic(() => Promise.resolve(Navbar), { ssr: false });
 
-export default Navbar;

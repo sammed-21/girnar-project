@@ -1,26 +1,26 @@
-import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
+// import { useRouter } from 'next/router';
+// import PropTypes from 'prop-types';
 
-import { Link } from '.';
+// import { Link } from '.';
 
-export { NavLink };
+// export { NavLink };
 
-NavLink.propTypes = {
-    href: PropTypes.string.isRequired,
-    exact: PropTypes.bool
-};
+// NavLink.propTypes = {
+//     href: PropTypes.string.isRequired,
+//     exact: PropTypes.bool
+// };
 
-NavLink.defaultProps = {
-    exact: false
-};
+// NavLink.defaultProps = {
+//     exact: false
+// };
 
-function NavLink({ children, href, exact, ...props }) {
-    const { pathname } = useRouter();
-    const isActive = exact ? pathname === href : pathname.startsWith(href);
+// function NavLink({ children, href, exact, ...props }) {
+//     const { pathname } = useRouter();
+//     const isActive = exact ? pathname === href : pathname.startsWith(href);
 
-    if (isActive) {
-        props.className += ' active';
-    }
+//     if (isActive) {
+//         props.className += ' active';
+//     }
 
-    return <Link href={href} {...props}>{children}</Link>;
-}
+//     return <Link href={href} {...props}>{children}</Link>;
+// }

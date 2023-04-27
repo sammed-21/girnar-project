@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Link from 'next/link'
 const PurchaseOrderForm = () => {
   // Hardcoded values for vendor dropdown options
   const vendors = ['Vendor A', 'Vendor B', 'Vendor C']
@@ -24,20 +25,20 @@ const PurchaseOrderForm = () => {
         <div className='flex justify-evenly'>
           {/* <div style={{ display: 'flex', justifyContent: 'space-evenly' ,textAlign:'center', marginTop:'40px',alignItems:'center' }}> */}
           <div>
-            <label htmlFor="poNumber" className='px-3'>PO Number:</label>
+            <label htmlform="poNumber" className='px-3'>PO Number:</label>
             <input type="text" id="poNumber" readOnly={true} placeholder='PO_NUMBER' className='border-2 p-2 border-black ' />
           </div>
           <div>
-            <label htmlFor="poDate" className='px-3'>PO Date:</label>
+            <label htmlform="poDate" className='px-3'>PO Date:</label>
             <input type="date" id="poDate" className='border-2 p-2 border-black ' />
           </div>
           <div>
-            <label htmlFor="userId" className='px-3'>User ID:</label>
+            <label htmlform="userId" className='px-3'>User ID:</label>
             <input type="text" id="userId" readOnly={true} placeholder='USER_ID' className='border-2 p-2 border-black ' />
           </div>
         </div>
         <div className="w-full flex justify-start text-center py-7 px-[23vh]">
-          <label htmlFor="vendor" className=''>Vendor:</label>
+          <label htmlform="vendor" className=''>Vendor:</label>
           <select id="vendor" className=' border-2 p-2 border-black  ml-3 '>
             {vendors.map((vendor) => (
               <option key={vendor} value={vendor}>{vendor}</option>
@@ -49,11 +50,11 @@ const PurchaseOrderForm = () => {
           <div className='w-full py-4 flex justify-around'>
 
             <div className='w-[40%]'>
-              <label htmlFor="poNumber" className='px-3'>Description:</label>
+              <label htmlform="poNumber" className='px-3'>Description:</label>
               <input type="text" id="poNumber" className='border-2  p-2 border-black ' />
             </div>
             <div>
-              <label htmlFor="poNumber" className='px-3'>Remarks:</label>
+              <label htmlform="poNumber" className='px-3'>Remarks:</label>
               <input type="text" id="poNumber" className='border-2 p-2 border-black ' />
             </div>
           </div>
@@ -61,11 +62,11 @@ const PurchaseOrderForm = () => {
             <div className='w-[40%]'>
 
 
-              <label htmlFor="poNumber" className='px-3'>PO Amount:</label>
+              <label htmlform="poNumber" className='px-3'>PO Amount:</label>
               <input type="text" id="poNumber" className='border-2  p-2 border-black ' />
             </div>
             <div>
-              <label htmlFor="poNumber" className='px-3'>Sell Total:</label>
+              <label htmlform="poNumber" className='px-3'>Sell Total:</label>
               <input type="text" id="poNumber" className='border-2 p-2 border-black ' />
             </div>
           </div>
@@ -92,7 +93,7 @@ const PurchaseOrderForm = () => {
               {/* <div key={index} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> */}
 
               <div className='flex flex-col text-center'>
-                {/* <label htmlFor={`paxName_${index}`}>Pax Name:</label> */}
+                {/* <label htmlform={`paxName_${index}`}>Pax Name:</label> */}
                 <input type="text" id={`paxName_${index}`} className='border-2 border-black ' value={row.paxName} onChange={(e) => {
                   const newRows = [...rows];
                   newRows[index].paxName = e.target.value;
@@ -100,7 +101,7 @@ const PurchaseOrderForm = () => {
                 }} />
               </div>
               <div className='flex flex-col text-center'>
-                {/* <label htmlFor={`desc1_${index}`}>Description 1:</label> */}
+                {/* <label htmlform={`desc1_${index}`}>Description 1:</label> */}
                 <input type="text" id={`desc1_${index}`} className='border-2 border-black ' value={row.desc1} onChange={(e) => {
                   const newRows = [...rows];
                   newRows[index].desc1 = e.target.value;
@@ -108,7 +109,7 @@ const PurchaseOrderForm = () => {
                 }} />
               </div>
               <div className='flex flex-col text-center'>
-                {/* <label htmlFor={`desc2_${index}`}>Description 2:</label> */}
+                {/* <label htmlform={`desc2_${index}`}>Description 2:</label> */}
                 <input type="text" id={`desc2_${index}`} className='border-2 border-black ' value={row.desc2} onChange={(e) => {
                   const newRows = [...rows];
                   newRows[index].desc2 = e.target.value;
@@ -116,7 +117,7 @@ const PurchaseOrderForm = () => {
                 }} />
               </div>
               <div className='flex flex-col text-center'>
-                {/* <label htmlFor={`desc2_${index}`}>Purchase Cost:</label> */}
+                {/* <label htmlform={`desc2_${index}`}>Purchase Cost:</label> */}
                 <input type="text" id={`desc2_${index}`} className='border-2 border-black ' value={row.purchaseCost} onChange={(e) => {
                   const newRows = [...rows];
                   newRows[index].purchaseCost = e.target.value;
@@ -124,7 +125,7 @@ const PurchaseOrderForm = () => {
                 }} />
               </div>
               <div className='flex flex-col text-center'>
-                {/* <label htmlFor={`desc2_${index}`}>Sell Price:</label> */}
+                {/* <label htmlform={`desc2_${index}`}>Sell Price:</label> */}
                 <input type="text" id={`desc2_${index}`} className='border-2 border-black ' value={row.sellPrice} onChange={(e) => {
                   const newRows = [...rows];
                   newRows[index].sellPrice = e.target.value;
@@ -155,7 +156,9 @@ const PurchaseOrderForm = () => {
         </div>
         <div className='flex justify-center'>
 
-          <button className='bg-blue-500 mx-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md'>Save</button>
+          <Link href='/payment' className='bg-blue-500 mx-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md'>
+            Save
+          </Link>
           <button className='bg-blue-500 mx-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md'>Print PO</button>
           <button className='bg-blue-500 mx-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md'>Create Invoice</button>
         </div>

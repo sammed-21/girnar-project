@@ -31,10 +31,10 @@ function Index() {
 
   return (
     <div>
-      <h1 className="flex justify-center m-[10vh] text-xl">PAYMENT</h1>
+      <h1 className="flex justify-center m-[10vh] text-xl">purchase</h1>
       <div style={{ display: "flex", justifyContent: "flex-end", marginRight: "10vh" }}>
 
-        <Link href="/payment/add" className="flex btn btn-sm btn-success mb-2">Add PAYMENT</Link>
+        <Link href="/purchases/add" className="flex btn btn-sm btn-success mb-2">Add PO</Link>
       </div>
 
 

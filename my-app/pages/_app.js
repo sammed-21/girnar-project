@@ -1,10 +1,12 @@
 import "/styles/globals.css";
+import React, { useState ,useEffect} from 'react'
 import Navbar from "../components/Navbar";
 import Head from "next/head";
 
 import { Alert } from "components/Alert";
 
 export default function App({ Component, pageProps }) {
+
   return (
     <>
       <Head>
@@ -13,7 +15,7 @@ export default function App({ Component, pageProps }) {
       <div className="app-container">
 
         <Navbar />
-        <Alert/>
+        {/* <Alert/> */}
       <Component {...pageProps} />;
       </div>
     </>
