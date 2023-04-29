@@ -5,6 +5,7 @@ import styles from "/styles/Home.module.css";
 
 import { useState } from "react";
 import Link from "next/link";
+import LoginFrom from "@/components/login/LoginForm";
  
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,6 +18,8 @@ export default function Home() {
         <meta name="tourist" content="nextjs,tourist guide" />
         <link rel="icon" href="/favcion.ico" />
       </Head>
+
+      <LoginFrom/>
       
     </div>
   );

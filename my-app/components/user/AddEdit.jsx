@@ -1,35 +1,44 @@
-import React, { useEffect } from "react"
+import React, { useState, useEffect } from "react"
 // import { appendErrors, useFrom } from "react-hook-form"
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { alertService } from "services/alert.service";
 import { useRouter } from "next/router";
-import { DevTool } from "@hookform/devtools";
+// import { DevTool } from "@hookform/devtools";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { userService } from "services/user.service";
 
 const AddEdit = ({ props }) => {
 
+  const [fullName, setName] = useState(" ")
+  const [lastName, setAddressLine1] = useState(" ")
+  const [adharNo, setAddressLine2] = useState(" ")
+  const [address, setCity] = useState(" ")
+  const [city, setPostalCode] = useState(" ")
+  const [competition, setCountry] = useState(" ")
+  const [date, setTelephone] = useState(" ")
+  const [id, setEmail] = useState(" ")
+  const [phoneNo, setNotes] = useState(" ")
 
-  const user = props?.user;
-  const isAddMode = !user;
+  // const user = props?.user;
+  // const isAddMode = !user;
   const router = useRouter();
+  function submitData() { }
+  // function clicked(data) {
+  //   console.warn("clicked")
 
-  function clicked(data) {
-    console.warn("clicked")
+  //   try {
 
-    try {
+  //     data.preventDefault();
+  //     return isAddMode
+  //       ? createUser(data)
+  //       : updateUser(user.id, data);
 
-      data.preventDefault();
-      return isAddMode
-        ? createUser(data)
-        : updateUser(user.id, data);
-
-    } catch (error) {
-      console.warn(error.message)
-    }
-  }
+  //   } catch (error) {
+  //     console.warn(error.message)
+  //   }
+  // }
 
 
   const validationSchema = Yup.object().shape({
@@ -52,41 +61,26 @@ const AddEdit = ({ props }) => {
   });
   const formOptions = { resolver: yupResolver(validationSchema) };
   //default form value
-  if (!isAddMode) {
-    const { ...defaultValues } = user;
-    formOptions.defaultValues = defaultValues;
-  }
+  // if (!isAddMode) {
+  //   const { ...defaultValues } = user;
+  //   formOptions.defaultValues = defaultValues;
+  // }
 
   //get function to build form with useForm() hook
   // const form= useForm( formOptions);
   const { register, handleSubmit, reset, formState, control } = useForm(formOptions);
+  const access_token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyQGdpcm5hci5jb20iLCJleHAiOjE2ODMzNTc2MTAsImlhdCI6MTY4Mjc1NDkxMH0._yc-mFrO52xyL3tqs1RSIgng9TSmisAFfu4xsXilAiU6ste_j144eFE42bix7NtwopJcQQchUl60dz7_TdHCOw"
   // const { register, handleSubmit, reset, formState, control }=form;
   const { errors } = formState;
 
 
-  function createUser(data) {
-    return userService.create(data)
-      .then(() => {
-        alertService.success("User added", { keepAfterRouteChange: true });
-        router.push(".");
-      })
-      .catch(alertService.error);
-  }
 
-  function updateUser(id, data) {
-    return userService.update(id, data)
-      .then(() => {
-        alertService.success("User updated", { keepAfterRouteChange: true });
-        router.push("..");
-      })
-      .catch(alertService.error);
-  }
   //creat the new user
   return (
     <>
       {/* <h1>{isAddMode ? 'ADD VENDOR' : 'EDIT VENDOR'}</h1> */}
-      <h1 className="text-bold text-xl flex item-center justify-center py-5">{isAddMode ? 'ADD Vendor' : 'EDIT Vendor'}</h1>
-      <form onSubmit={handleSubmit(clicked)} className={`flex flex-col justify-center w-full align-center
+      <h1 className="text-bold text-xl flex item-center justify-center py-5">Add Vendor</h1>
+      <form onSubmit={handleSubmit(submitData)} className={`flex flex-col justify-center w-full align-center
     items-center space-y-5 `} >
 
 
@@ -138,7 +132,7 @@ const AddEdit = ({ props }) => {
             {/* <div className="flex flex-col align-center form-row"> */}
             <div className="form-group ">
               <label>Full Name</label>
-              <input name="fullName" type="text" {...register("fullName")} className={`form-control border-2 border-black rounded-md ${errors.fullName ? "is-invalid" : ""}`} />
+              <input value={fullName} name="fullName" type="text" onChange={(e) => setName(e.target.value)} {...register("fullName")} className={`form-control border-2 border-black rounded-md ${errors.fullName ? "is-invalid" : ""}`} />
               <div className="invalid-feedback">{errors.fullName?.message}</div>
             </div>
 
@@ -172,7 +166,7 @@ const AddEdit = ({ props }) => {
 
 
         <div className="form-group ">
-          <button type="submit" href="/users" onClick={handleSubmit(clicked)} disabled={formState.isSubmitting} className="btn text-black btn-success mr-2">
+          <button type="submit" href="/users" onClick={handleSubmit(submitData)} disabled={formState.isSubmitting} className="btn text-black btn-success mr-2">
             {/* {formState.isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}  */}
             Save
           </button>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const BASE_API_ENDPOINT = 'https://api.kisanfeeds.in/api/v1';
+const BASE_API_ENDPOINT='http://18.139.85.219:8088/api/v1';
 const NEW_TOKEN_API_ENDPOINT = BASE_API_ENDPOINT + '/user/refresh-token';
 
 function useUpsertData(

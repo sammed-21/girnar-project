@@ -16,10 +16,10 @@ const Navbar = () => {
       {/* <nav className={styles.mainnav}> */}
       {/* <nav className="flex  bg-pink text-black fixed top-0 decoration-none list-none h-[10vh] w-full item-center justify-center space-x-9 py-7"> */}
       <nav className="flex  bg-blue-300 text-black fixed top-0 decoration-none list-none h-[10vh] w-full item-center justify-center space-x-7 py-7">
-        <Link href="/">
+        {/* <Link href="/">
           {" "}
           <li>Home</li>{" "}
-        </Link>
+        </Link> */}
         <Link href="/vendor">
           {" "}
           <li>Vendor</li>{" "}
@@ -104,6 +104,7 @@ const Navbar = () => {
             </li>
 
           </div>
+
 
 
 
