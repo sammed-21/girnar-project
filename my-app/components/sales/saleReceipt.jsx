@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
 const Payment = () => {
-    const [rows, setRows] = useState([{ title: '', paxName: '', desc1: '', desc2: '', purchaseCost: '', sellPrice: '' }])
+    const [rows, setRows] = useState([{ ReceiptId: '', Description: '', PaymentType: '', DataReceived: '', AmountReceived: '' }])
     // Function for adding a new row
     const handleAddRow = () => {
-        setRows([...rows, { title: '', paxName: '', desc1: '', desc2: '', purchaseCost: '', sellPrice: '' }]);
+        setRows([...rows, { ReceiptId: '', Description: '', PaymentType: '', DataReceived: '', AmountReceived: '' }]);
     }
     // Function for deleting a row
     const handleDeleteRow = (index) => {
@@ -12,31 +12,21 @@ const Payment = () => {
         newRows.splice(index, 1);
         setRows(newRows);
     }
+    const vendors = ["customer 1", "customer 2", "customer 3"]
     return (
         <div>
 
             <div className='p-[5%]'>
 
-                <h1 style={{ textAlign: 'center', fontWeight: 'bold' }} className='pb-5'>Payment</h1>
+                <h1 style={{ textAlign: 'center', fontWeight: 'bold' }} className='pb-5 py-3'>Receipts</h1>
                 <div className='flex justify-evenly'>
                     {/* <div style={{ display: 'flex', justifyContent: 'space-evenly' ,textAlign:'center', marginTop:'40px',alignItems:'center' }}> */}
                     <div>
-                        <form className="flex items-center">
-                            <label htmlFor="simple-search" className="sr-only">Search</label>
-                            <div className="relative w-full">
-                                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                    <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
-                                </div>
-                                <input type="text" id="simple-search" className="bg-white border border-gray-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required />
-                            </div>
-                            <button type="submit" className="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLineCap="round" strokeLineJoin="round" strokeLineWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                                <span className="sr-only">Search</span>
-                            </button>
-                        </form>
+                        <label htmlform="userId" className='px-3'>Invoice Number: </label>
+                        <input type="text" id="userId" readOnly={true} placeholder='Invoice No' className='border-2 p-2 border-black ' />
                     </div>
                     <div>
-                        <label htmlform="poDate" className='px-3'>PO Date:</label>
+                        <label htmlform="poDate" className='px-3'>Invoice Date:</label>
                         <input type="date" id="poDate" className='border-2 p-2 border-black ' />
                     </div>
                     <div>
@@ -45,9 +35,21 @@ const Payment = () => {
                     </div>
                 </div>
 
-                <div className="w-full flex justify-start text-center py-7 px-[23vh]">
-                    <label htmlform="vendor" className='px-3'>Vendor:</label>
-                    <input type="text" id="poNumber" readOnly={true} className='border-2  p-2 border-black ' placeholder='Vendor' />
+                <div className="w-full flex justify-between text-center py-7 px-[19vh]">
+                    <div>
+
+                        <label htmlform="vendor" className='px-3'>Customer: </label>
+                        <input type="text" id="poNumber" className='border-2  p-2 border-black ' placeholder='Customer' />
+                    </div>
+                    <div className='flex justify-center'>
+
+                        <label htmlform="vendor" className='pr-2 pl-[4vh]'>Sales Category:</label>
+                        <select id="vendor" className=' border-2 w-[24vh] pl-[6vh] p-2 border-black '>
+                            {vendors.map((vendor) => (
+                                <option key={vendor} value={vendor}>{vendor}</option>
+                            ))}
+                        </select>
+                    </div>
                 </div>
 
                 <div className=' w-full mb-9'>
@@ -55,23 +57,23 @@ const Payment = () => {
 
                         <div className='w-[40%]'>
                             <label htmlform="poNumber" className='px-3'>Description:</label>
-                            <input type="text" id="poNumber" readOnly={true} className='border-2  p-2 border-black ' placeholder='Description' />
+                            <input type="text" id="poNumber" className='border-2  p-2 border-black ' placeholder='Description' />
                         </div>
                         <div>
-                            <label htmlform="poNumber" className='px-3'>Remarks:</label>
-                            <input type="text" id="poNumber" readOnly={true} className='border-2 p-2 border-black ' placeholder='Remarks' />
+                            <label htmlform="poNumber" className='px-3'>Message:</label>
+                            <input type="text" id="poNumber" className='border-2 p-2 border-black ' placeholder='Message' />
                         </div>
                     </div>
                     <div className='w-full flex justify-around'>
                         <div className='w-[40%]'>
 
 
-                            <label htmlform="poNumber" className='px-3'>PO Amount:</label>
-                            <input type="text" id="poNumber" readOnly={true} className='border-2  p-2 border-black ' placeholder='PO Amount' />
+                            <label htmlform="poNumber" className=''>Invoice Amount : </label>
+                            <input type="text" id="poNumber" className='border-2  p-2 border-black ' placeholder='Invoice Amount' />
                         </div>
                         <div>
-                            <label htmlform="poNumber" className='px-3'>Sell Total:</label>
-                            <input type="text" id="poNumber" className='border-2 p-2 border-black ' />
+                            <label htmlform="poNumber" className='px-3'>Total Paid:</label>
+                            <input type="text" id="poNumber" className='border-2 p-2 border-black ' placeholder='Total Paid' />
                         </div>
                     </div>
                 </div>
@@ -82,11 +84,11 @@ const Payment = () => {
                         <thead>
                             <tr className='w-full'>
                                 <th style={{ width: '10%' }}></th>
-                                <th style={{ width: '15%' }}>Pax Name:</th>
-                                <th style={{ width: '16%' }}>Description 1:</th>
-                                <th style={{ width: '13%' }}>Description 2:</th>
-                                <th style={{ width: '17%' }}>Purchase Cost:</th>
-                                <th style={{ width: '40%' }}>Sell Price:</th>
+                                <th style={{ width: '15%' }}>ReceiptId:</th>
+                                <th style={{ width: '16%' }}>Description:</th>
+                                <th style={{ width: '13%' }}>Payment Type:</th>
+                                <th style={{ width: '17%' }}>Data Received:</th>
+                                <th style={{ width: '40%' }}>Amount Received:</th>
                             </tr>
                         </thead>
                     </table>
@@ -97,42 +99,42 @@ const Payment = () => {
                             {/* <div key={index} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> */}
 
                             <div className='flex flex-col text-center'>
-                                {/* <label htmlform={`paxName_${index}`}>Pax Name:</label> */}
-                                <input type="text" id={`paxName_${index}`} className='border-2 border-black ' value={row.paxName} onChange={(e) => {
+                                {/* <label htmlform={`ReceiptId_${index}`}>Pax Name:</label> */}
+                                <input type="text" id={`ReceiptId_${index}`} className='border-2 border-black ' value={row.ReceiptId} onChange={(e) => {
                                     const newRows = [...rows];
-                                    newRows[index].paxName = e.target.value;
+                                    newRows[index].ReceiptId = e.target.value;
                                     setRows(newRows);
                                 }} />
                             </div>
                             <div className='flex flex-col text-center'>
-                                {/* <label htmlform={`desc1_${index}`}>Description 1:</label> */}
-                                <input type="text" id={`desc1_${index}`} className='border-2 border-black ' value={row.desc1} onChange={(e) => {
+                                {/* <label htmlform={`Description_${index}`}>Description 2:</label> */}
+                                <input type="text" id={`Description_${index}`} className='border-2 border-black ' value={row.Description} onChange={(e) => {
                                     const newRows = [...rows];
-                                    newRows[index].desc1 = e.target.value;
+                                    newRows[index].Description = e.target.value;
                                     setRows(newRows);
                                 }} />
                             </div>
                             <div className='flex flex-col text-center'>
-                                {/* <label htmlform={`desc2_${index}`}>Description 2:</label> */}
-                                <input type="text" id={`desc2_${index}`} className='border-2 border-black ' value={row.desc2} onChange={(e) => {
+                                {/* <label htmlform={`PaymentType_${index}`}>Description 1:</label> */}
+                                <input type="text" id={`PaymentType_${index}`} className='border-2 border-black ' value={row.PaymentType} onChange={(e) => {
                                     const newRows = [...rows];
-                                    newRows[index].desc2 = e.target.value;
+                                    newRows[index].PaymentType = e.target.value;
                                     setRows(newRows);
                                 }} />
                             </div>
                             <div className='flex flex-col text-center'>
-                                {/* <label htmlform={`desc2_${index}`}>Purchase Cost:</label> */}
-                                <input type="text" id={`desc2_${index}`} className='border-2 border-black ' value={row.purchaseCost} onChange={(e) => {
+                                {/* <label htmlform={`Description_${index}`}>Purchase Cost:</label> */}
+                                <input type="text" id={`Description_${index}`} className='border-2 border-black ' value={row.DataReceived} onChange={(e) => {
                                     const newRows = [...rows];
-                                    newRows[index].purchaseCost = e.target.value;
+                                    newRows[index].DataReceived = e.target.value;
                                     setRows(newRows);
                                 }} />
                             </div>
                             <div className='flex flex-col text-center'>
-                                {/* <label htmlform={`desc2_${index}`}>Sell Price:</label> */}
-                                <input type="text" id={`desc2_${index}`} className='border-2 border-black ' value={row.sellPrice} onChange={(e) => {
+                                {/* <label htmlform={`Description_${index}`}>Sell Price:</label> */}
+                                <input type="text" id={`Description_${index}`} className='border-2 border-black ' value={row.AmountReceived} onChange={(e) => {
                                     const newRows = [...rows];
-                                    newRows[index].sellPrice = e.target.value;
+                                    newRows[index].AmountReceived = e.target.value;
                                     setRows(newRows);
                                 }} />
                             </div>

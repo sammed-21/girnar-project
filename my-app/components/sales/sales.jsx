@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
 const Sales = () => {
-    const [rows, setRows] = useState([{ title: '', paxName: '', desc1: '', desc2: '', purchaseCost: '', sellPrice: '' }])
+    const [rows, setRows] = useState([{ poNumber: '', poDate: '', description: '', totalPurchaseCost: '', totalSellPrice: '' }])
     // Function for adding a new row
     const vendors = ["customer 1 ", "customer 2", "customer 3"]
     const handleAddRow = () => {
-        setRows([...rows, { title: '', paxName: '', desc1: '', desc2: '', purchaseCost: '', sellPrice: '' }]);
+        setRows([...rows, { poNumber: '', poDate: '', description: '', totalPurchaseCost: '', totalSellPrice: '' }]);
     }
     // Function for deleting a row
     const handleDeleteRow = (index) => {
@@ -18,16 +18,16 @@ const Sales = () => {
 
         <div className='p-[5%]'>
 
-            <h1 className='mt-[5vh]pb-5 align-center text-center py-9 font-bold'>Sales</h1>
+            <h1 className='mt-[5vh]pb-5 align-center text-center py-9 font-bold'>Sales Entry</h1>
             <div className='flex justify-evenly'>
                 {/* <div style={{ display: 'flex', justifyContent: 'space-evenly' ,textAlign:'center', marginTop:'40px',alignItems:'center' }}> */}
                 <div >
-                    <label htmlform="poNumber" className='px-3'>PO Number:</label>
-                    <input type="text" id="poNumber" readOnly={true} placeholder='PO_NUMBER' className='border-2 p-2 border-black ' />
+                    <label htmlform="poNumber" className='px-3'>Invoice Number:</label>
+                    <input type="text" id="poNumber" readOnly={true} placeholder='Invoice No' className='border-2 p-2 border-black ' />
                 </div>
 
                 <div>
-                    <label htmlform="poDate" className='px-3'>PO Date:</label>
+                    <label htmlform="poDate" className='px-3'>Invoice Date:</label>
                     <input type="date" id="poDate" className='border-2 p-2 border-black ' />
                 </div>
                 <div>
@@ -66,7 +66,7 @@ const Sales = () => {
                         <input type="text" id="poNumber" readOnly={true} className='border-2 w-[40vh] p-2 border-black ' placeholder='Description' />
                     </div>
                     <div>
-                        <label htmlform="poNumber" className='px-3'>message:</label>
+                        <label htmlform="poNumber" className='px-3'>Message:</label>
                         <input type="text" id="poNumber" readOnly={true} className='border-2 w-[40vh] p-2 border-black ' placeholder='Remarks' />
                     </div>
                 </div>
@@ -74,7 +74,7 @@ const Sales = () => {
                     <div className='w-[40%]'>
 
 
-                        <label htmlform="poNumber" className='px-3'>PO Amount:</label>
+                        <label htmlform="poNumber" className='px-3'>Invoice Amount:</label>
                         <input type="text" id="poNumber" readOnly={true} className='border-2  p-2 border-black ' placeholder='PO Amount' />
                     </div>
                     <div>
@@ -102,11 +102,11 @@ const Sales = () => {
                     <thead>
                         <tr className='w-full'>
                             <th style={{ width: '10%' }}></th>
-                            <th style={{ width: '15%' }}>Pax Name:</th>
-                            <th style={{ width: '16%' }}>Description 1:</th>
-                            <th style={{ width: '13%' }}>Description 2:</th>
-                            <th style={{ width: '17%' }}>Purchase Cost:</th>
-                            <th style={{ width: '40%' }}>Sell Price:</th>
+                            <th style={{ width: '15%' }}>PO Number:</th>
+                            <th style={{ width: '16%' }}>PO Date:</th>
+                            <th style={{ width: '13%' }}>Description :</th>
+                            <th style={{ width: '17%' }}>Total Purchase Cost:</th>
+                            <th style={{ width: '40%' }}>Total Sell Price:</th>
                         </tr>
                     </thead>
                 </table>
@@ -117,42 +117,42 @@ const Sales = () => {
                         {/* <div key={index} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}> */}
 
                         <div className='flex flex-col text-center'>
-                            {/* <label htmlform={`paxName_${index}`}>Pax Name:</label> */}
-                            <input type="text" id={`paxName_${index}`} className='border-2 border-black ' value={row.paxName} onChange={(e) => {
+                            {/* <label htmlform={`poNumber_${index}`}>Pax Name:</label> */}
+                            <input type="text" id={`poNumber_${index}`} className='border-2 border-black ' value={row.poNumber} onChange={(e) => {
                                 const newRows = [...rows];
-                                newRows[index].paxName = e.target.value;
+                                newRows[index].poNumber = e.target.value;
                                 setRows(newRows);
                             }} />
                         </div>
                         <div className='flex flex-col text-center'>
-                            {/* <label htmlform={`desc1_${index}`}>Description 1:</label> */}
-                            <input type="text" id={`desc1_${index}`} className='border-2 border-black ' value={row.desc1} onChange={(e) => {
+                            {/* <label htmlform={`poDate_${index}`}>Description 1:</label> */}
+                            <input type="text" id={`poDate_${index}`} className='border-2 border-black ' value={row.poDate} onChange={(e) => {
                                 const newRows = [...rows];
-                                newRows[index].desc1 = e.target.value;
+                                newRows[index].poDate = e.target.value;
                                 setRows(newRows);
                             }} />
                         </div>
                         <div className='flex flex-col text-center'>
                             {/* <label htmlform={`desc2_${index}`}>Description 2:</label> */}
-                            <input type="text" id={`desc2_${index}`} className='border-2 border-black ' value={row.desc2} onChange={(e) => {
+                            <input type="text" id={`description${index}`} className='border-2 border-black ' value={row.description} onChange={(e) => {
                                 const newRows = [...rows];
-                                newRows[index].desc2 = e.target.value;
+                                newRows[index].description = e.target.value;
                                 setRows(newRows);
                             }} />
                         </div>
                         <div className='flex flex-col text-center'>
                             {/* <label htmlform={`desc2_${index}`}>Purchase Cost:</label> */}
-                            <input type="text" id={`desc2_${index}`} className='border-2 border-black ' value={row.purchaseCost} onChange={(e) => {
+                            <input type="text" id={`totalPurchaseCost${index}`} className='border-2 border-black ' value={row.totalPurchaseCost} onChange={(e) => {
                                 const newRows = [...rows];
-                                newRows[index].purchaseCost = e.target.value;
+                                newRows[index].totalPurchaseCost = e.target.value;
                                 setRows(newRows);
                             }} />
                         </div>
                         <div className='flex flex-col text-center'>
                             {/* <label htmlform={`desc2_${index}`}>Sell Price:</label> */}
-                            <input type="text" id={`desc2_${index}`} className='border-2 border-black ' value={row.sellPrice} onChange={(e) => {
+                            <input type="text" id={`totalSellPrice${index}`} className='border-2 border-black ' value={row.totalSellPrice} onChange={(e) => {
                                 const newRows = [...rows];
-                                newRows[index].sellPrice = e.target.value;
+                                newRows[index].totalSellPrice = e.target.value;
                                 setRows(newRows);
                             }} />
                         </div>

@@ -25,3 +25,6 @@ a{
     text-align: center;
     box-sizing: content-box;
 }
+img{
+    height: 10vh;
+}
